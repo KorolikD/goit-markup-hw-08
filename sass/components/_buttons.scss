@@ -1,0 +1,70 @@
+.button {
+  display: inline-block;
+  border: 0;
+  border-radius: 4px;
+  padding: 6px 22px;
+
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.62;
+  text-align: center;
+
+  color: $title-text-color;
+  background-color: $primary-background-color;
+  cursor: pointer;
+
+  user-select: none;
+}
+
+// ! submit-button
+.submit-button {
+  @extend .button;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 200px;
+  height: 50px;
+
+  color: $button-text-colour;
+  background-color: $accent-color;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    background-color: $button-focus-color;
+  }
+}
+
+.submit-button__icon {
+  margin-left: 10px;
+}
+
+// ! close-button
+.close-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+
+  width: 30px;
+  height: 30px;
+
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+  }
+}

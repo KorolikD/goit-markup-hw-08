@@ -1,0 +1,16 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+
+  color: $primary-text-color;
+  background-color: $primary-background-color;
+}
+
+a {
+  display: inline-block;
+
+  text-decoration: none;
+
+  // user-select: none;
+}
