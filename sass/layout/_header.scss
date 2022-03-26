@@ -312,7 +312,12 @@
 .social-list__item {
   &:not(:last-child) {
     margin-right: 20px;
-    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 436px) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
   }
 }
 
