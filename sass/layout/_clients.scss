@@ -1,14 +1,21 @@
 .clients-list {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+
+  margin: -15px;
 }
 
 .clients-list__item {
-  width: 170px;
   height: 92px;
+  margin: 15px;
+  flex-basis: calc((100% - 30px * 2) / 2);
 
-  &:not(:last-child) {
-    margin-right: 30px;
+  @include tablet {
+    flex-basis: calc((100% - 30px * 3) / 3);
+  }
+
+  @include desctop {
+    flex-basis: calc((100% - 30px * 6) / 6);
   }
 }
 

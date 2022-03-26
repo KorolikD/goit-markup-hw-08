@@ -2,41 +2,127 @@
   border-bottom: 1px solid $header-line;
 }
 
-.header__container {
+.container__header {
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 767px) {
+    justify-content: space-between;
+  }
 }
 
 .logo__header {
-  margin-right: 93px;
+  padding: 16px 0;
+
+  @include tablet {
+    padding: 0;
+    margin-right: 93px;
+  }
+}
+
+// ! button
+.menu-btn {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+  }
+}
+
+.menu-open-btn {
+  @include tablet {
+    display: none;
+  }
+}
+
+.menu-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.mobile-menu {
+  @media screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    padding: 48px 40px;
+
+    transform: translateX(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    background-color: #fff;
+
+    &.is-open {
+      transform: translateX(0);
+    }
+  }
+
+  @include tablet {
+    display: flex;
+    flex-grow: 1;
+  }
 }
 
 .site-nav {
-  display: flex;
-  align-items: center;
+  // @media screen and (max-width: 767px) {
+  //   margin-bottom: 302px;
+  // }
+  @include tablet {
+    display: flex;
+    align-items: center;
+  }
 }
 
 // !Навигация
 
 .nav-list {
-  display: flex;
+  @include tablet {
+    display: flex;
+  }
 }
 
 .nav-list__item {
-  position: relative;
-
-  &:not(:last-child) {
-    margin-right: 50px;
+  @media screen and (max-width: 767px) {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+    &:last-child {
+      margin-bottom: 64px;
+    }
+  }
+  @include tablet {
+    position: relative;
+    &:not(:last-child) {
+      margin-right: 50px;
+    }
   }
 }
 
 .nav-list__link {
   display: block;
-  padding-top: 32px;
-  padding-bottom: 32px;
-
   font-weight: 500;
-  line-height: 1.14;
+  font-size: 40px;
+  line-height: 1.18;
   letter-spacing: 0.02em;
 
   color: $title-text-color;
@@ -47,24 +133,33 @@
   &:focus {
     color: $accent-color;
   }
+
+  @include tablet {
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    font-size: 14px;
+    line-height: 1.14;
+  }
 }
 
 .nav-list__link--current {
   color: $accent-color;
+  @include tablet {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
+      display: block;
+      height: 4px;
+      width: 100%;
 
-    display: block;
-    height: 4px;
-    width: 100%;
+      background-color: $accent-color;
+      border-radius: 2px;
 
-    background-color: $accent-color;
-    border-radius: 2px;
-
-    animation: moveCurrentDecoration 350ms cubic-bezier(0.4, 0, 0.2, 1);
+      animation: moveCurrentDecoration 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
   }
 }
 
@@ -84,23 +179,50 @@
 
 .contact-list {
   display: flex;
-  margin-left: auto;
+  @media screen and (max-width: 767px) {
+    flex-direction: column-reverse;
+    margin-bottom: 64px;
+    margin-top: auto;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    justify-content: center;
+    flex-direction: column;
+    margin-left: auto;
+  }
+
+  @include desctop {
+    margin-left: auto;
+  }
 }
 
 .contact-list__item {
-  &:not(:last-child) {
-    margin-right: 50px;
+  @media screen and (max-width: 767px) {
+    &:last-child {
+      margin-bottom: 32px;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  @include desctop {
+    &:not(:last-child) {
+      margin-right: 50px;
+    }
   }
 }
 
 .contact-list__link {
   display: flex;
   align-items: center;
-  padding-top: 32px;
-  padding-bottom: 32px;
 
   font-weight: 500;
-  line-height: 1.14;
+  font-size: 24px;
+  line-height: 1.17;
   letter-spacing: 0.02em;
 
   color: $primary-text-color;
@@ -111,10 +233,101 @@
   &:focus {
     color: $accent-color;
   }
+
+  @include tablet {
+    font-size: 12px;
+  }
+
+  @include desctop {
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    font-size: 14px;
+    line-height: 1.14;
+  }
+
+  &--accent {
+    @media screen and (max-width: 767px) {
+      font-weight: 500;
+      font-size: 34px;
+      line-height: 1.18;
+      color: $accent-color;
+
+      &:hover,
+      &:focus {
+        color: #188ce8;
+      }
+    }
+  }
 }
 
-.contact-list__icon {
-  margin-right: 10px;
+.contact-list__icon-envelope,
+.contact-list__icon-phone {
+  display: none;
 
-  fill: currentColor;
+  @include tablet {
+    display: block;
+    margin-right: 8px;
+    fill: currentColor;
+  }
+
+  @include desctop {
+    margin-right: 10px;
+  }
+}
+
+.contact-list__icon-envelope {
+  @include tablet {
+    width: 14px;
+    height: 10px;
+  }
+
+  @include desctop {
+    width: 16px;
+    height: 12px;
+  }
+}
+
+.contact-list__icon-phone {
+  @include tablet {
+    width: 10px;
+    height: 14px;
+  }
+
+  @include desctop {
+    width: 10px;
+    height: 16px;
+  }
+}
+
+.social-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.social-list__item {
+  &:not(:last-child) {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.social-list__link {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 0.02em;
+
+  color: $accent-color;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: #188ce8;
+  }
 }

@@ -1,15 +1,14 @@
 .service-list {
   display: flex;
+  margin: -15px;
 }
 
 .service-list__item {
   position: relative;
 
-  flex-basis: 370px;
+  margin: 15px;
 
-  &:not(:last-child) {
-    margin-right: 30px;
-  }
+  flex-basis: calc((100% - 30px * 3) / 3);
 }
 
 .service-list__title {

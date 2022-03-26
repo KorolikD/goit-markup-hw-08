@@ -7,16 +7,64 @@
 }
 
 .footer__elements {
-  display: flex;
-  align-items: baseline;
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @include desctop {
+    justify-content: start;
+    flex-wrap: nowrap;
+    align-items: baseline;
+  }
 }
 
 .footer_first-column {
-  margin-right: 70px;
+  text-align: center;
+  margin-bottom: 60px;
+
+  @include tablet {
+    margin-left: 61px;
+  }
+
+  @include desctop {
+    margin: 0 70px 0 0;
+
+    text-align: start;
+  }
+}
+
+.footer__second-column {
+  text-align: center;
+  margin-bottom: 60px;
+
+  @include tablet {
+    margin: 5px 74px 0 0;
+  }
+
+  @include desctop {
+    margin: 0;
+
+    text-align: start;
+  }
 }
 
 .footer__third-column {
-  margin-left: auto;
+  text-align: center;
+
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  @include desctop {
+    margin-left: auto;
+    display: block;
+    text-align: start;
+    flex-grow: 0;
+  }
 }
 
 .logo__footer {
@@ -30,7 +78,13 @@
 
 .address-list__item {
   &:not(:last-child) {
-    margin-bottom: 9px;
+    margin-bottom: 8px;
+  }
+
+  @include desctop {
+    &:not(:last-child) {
+      margin-bottom: 9px;
+    }
   }
 }
 
@@ -62,15 +116,17 @@
 }
 
 .mailing-form {
-  display: flex;
-  align-items: center;
+  @include desctop {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .mailing-form__input {
-  width: 358px;
+  margin-bottom: 20px;
+  width: 100%;
   height: 50px;
   padding: 0 16px;
-  margin-right: 12px;
 
   font-size: 16px;
   line-height: 1.25;
@@ -84,5 +140,22 @@
 
   &::placeholder {
     color: rgba(255, 255, 255, 0.6);
+  }
+
+  @include tablet {
+    width: 450px;
+  }
+
+  @include desctop {
+    margin-bottom: 0;
+    margin-right: 12px;
+    width: 358px;
+  }
+}
+
+.mailing-form__submit-button {
+  @media screen and (max-width: 1199px) {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
